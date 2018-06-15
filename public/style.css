@@ -25,7 +25,7 @@ form div {
 }
 
 #top-container {
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -34,6 +34,44 @@ form div {
 #screen-outputs {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-content: center;
+}
+
+#subheader {
+  width: 65%;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+#subsub {
+  width: 67%;
+}
+
+#logo {
+  width: 18%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#header {
+  font-family: 'Shadows Into Light', cursive;
+}
+
+#shadows {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: rgb(231, 45, 45);
+}
+
+#recommendation {
+  font-family: 'Shadows Into Light', cursive;
+}
+
+#circles {
+  font-size: 0.5rem;
+  margin-top: -10px;
+  margin-bottom: 0px;
 }

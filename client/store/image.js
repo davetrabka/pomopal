@@ -55,7 +55,7 @@ export const analyzeNewImage = imageUrl => async dispatch => {
         },
       }
     )
-    // console.log('THIS IS THE DATA: ', data)
+    console.log('AI DATA FOR IMAGE: ', data)
     dispatch(analyzedImage(data))
   } catch (error) {
     console.error(error)
@@ -65,13 +65,9 @@ export const analyzeNewImage = imageUrl => async dispatch => {
 const imageReducer = (state = initialState, action) => {
   switch (action.type) {
     case ANALYZED_IMAGE: {
-      const execute =
-        state.images.length < 10
-          ? [...state.images, action.imageDetails]
-          : [...state.images.slice(1), action.imageDetails]
       return {
         ...state,
-        images: execute,
+        images: [...state.images, action.imageDetails],
         currentImage: { ...action.imageDetails },
       }
     }

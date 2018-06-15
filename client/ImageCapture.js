@@ -14,24 +14,10 @@ export const getCameraAccess = status => {
       document.querySelector('video').srcObject = mediaStream
       const track = mediaStream.getVideoTracks()[0]
       imageCapture = new ImageCapture(track)
-
       if (!off) track.stop()
     })
     .catch(error => console.error(error))
 }
-
-export const takeImage = () => {
-  imageCapture
-    .grabFrame()
-    .then(imageBitmap => {
-      const canvas = document.querySelector('#grabFrameCanvas')
-      drawCanvas(canvas, imageBitmap)
-      imageDataUrl = canvas.toDataURL('image/jpeg')
-    })
-    .catch(error => console.error(error))
-}
-
-export const getImageUrl = () => imageDataUrl
 
 const drawCanvas = (canvas, img) => {
   canvas.width = getComputedStyle(canvas).width.split('px')[0]
@@ -54,3 +40,16 @@ const drawCanvas = (canvas, img) => {
       img.height * ratio
     )
 }
+
+export const takeImage = () => {
+  imageCapture
+    .grabFrame()
+    .then(imageBitmap => {
+      const canvas = document.querySelector('#grabFrameCanvas')
+      drawCanvas(canvas, imageBitmap)
+      imageDataUrl = canvas.toDataURL('image/jpeg')
+    })
+    .catch(error => console.error(error))
+}
+
+export const getImageUrl = () => imageDataUrl

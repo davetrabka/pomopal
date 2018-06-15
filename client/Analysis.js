@@ -1,6 +1,7 @@
 'use strict'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Header, Image, Modal, Button, Icon } from 'semantic-ui-react'
 import { fetchImages } from './store/image'
 
 class Analysis extends Component {
@@ -9,17 +10,48 @@ class Analysis extends Component {
   }
 
   analyzeSmile = () => {
-    console.log('THIS>PROPS>IMAGES', this.props.images)
-    const smile =
-      this.props.images.length > 0
-        ? this.props.images.map(analysis => analysis[0].faceAttributes.smile)
-        : null
-    console.log('SMILE ARRAY: ', smile)
+    const smile = this.props.images.map(
+      analysis => analysis[0].faceAttributes.smile
+    )
+    console.log(
+      `%c SMILE GRADE OVER TIME: [${smile}]`,
+      'color: white; font-weight: bold; background: red'
+    )
+    for (let i = 0; i < smile.length; i++) {
+      if (smile[i] < smile[i - 1] && smile[i - 1] < smile[i - 2]) {
+        return true
+      }
+      if ((smile[i] + smile[i - 1] + smile[i - 2]) / 3 / smile[0] < 0.5) {
+        return true
+      }
+    }
   }
 
   render() {
-    this.analyzeSmile()
-    return <div />
+    let open = this.analyzeSmile()
+    return (
+      <Modal size="small" open={open}>
+        <Modal.Content image>
+          <Image wrapped size="small" src="/img/sad-emoji.png" />
+          <Modal.Description>
+            <Header>Is everything ok?</Header>
+            <p>
+              We noticed a frown forming on that face and wanted to check in.
+              Take a deep breath, no work is worth getting too worked up about!
+            </p>
+            <Header as="h2" id="recommendation" color="red">
+              Take a 5 minute break - you look like you need it!
+            </Header>
+          </Modal.Description>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button color="grey">
+            <Icon name="remove" onClick={() => this.render()} /> I'm fine, go
+            away!
+          </Button>
+        </Modal.Actions>
+      </Modal>
+    )
   }
 }
 
