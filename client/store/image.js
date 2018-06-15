@@ -1,22 +1,53 @@
+'use strict'
 import axios from 'axios'
 
 const initialState = {
   images: [],
-  currentImageUrl: '',
+  currentImage: {},
 }
 
-const NEW_IMAGE = 'NEW_IMAGE'
+// const STORED_NEW_IMAGE = 'STORED_NEW_IMAGE'
+const ANALYZED_IMAGE = 'ANALYZED_IMAGE'
+const FETCHED_IMAGES = 'FETCHED_IMAGES'
 
-const newImage = imageDetails => ({
-  type: NEW_IMAGE,
+const analyzedImage = imageDetails => ({
+  type: ANALYZED_IMAGE,
   imageDetails,
 })
 
-export const postNewImage = imageUrl => async dispatch => {
+const fetchedImages = () => ({
+  type: FETCHED_IMAGES,
+})
+
+// const storedNewImage = () => ({
+//   type: STORED_NEW_IMAGE,
+// })
+
+// export const storeNewImage = dataUrl => async dispatch => {
+//   try {
+//     const { data } = await axios.post('https://api.imgur.com/3/image', {
+//       type: 'base64',
+//       image: dataUrl,
+//       headers: {
+//         Authorization: 'Client-ID 7b3236e6fd9e639',
+//         Accept: 'application/json',
+//       },
+//     })
+//     console.log('IMGUR THUNK: ', data)
+//     dispatch(storedNewImage())
+//   } catch (error) {
+//     console.error(error)
+//   }
+// }
+export const fetchImages = () => dispatch => {
+  dispatch(fetchedImages())
+}
+
+export const analyzeNewImage = imageUrl => async dispatch => {
   try {
     const { data } = await axios.post(
-      'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=smile%2Cemotion%2Cexposure%2Cnoise',
-      imageUrl,
+      'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=smile%2Cemotion%2Cexposure',
+      { url: imageUrl },
       {
         headers: {
           'Content-Type': 'application/json',
@@ -24,8 +55,8 @@ export const postNewImage = imageUrl => async dispatch => {
         },
       }
     )
-    console.log(data)
-    dispatch(newImage(data))
+    // console.log('THIS IS THE DATA: ', data)
+    dispatch(analyzedImage(data))
   } catch (error) {
     console.error(error)
   }
@@ -33,12 +64,22 @@ export const postNewImage = imageUrl => async dispatch => {
 
 const imageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case NEW_IMAGE: {
+    case ANALYZED_IMAGE: {
+      const execute =
+        state.images.length < 10
+          ? [...state.images, action.imageDetails]
+          : [...state.images.slice(1), action.imageDetails]
       return {
         ...state,
-        images: [...state.images, action.imageDetails],
+        images: execute,
+        currentImage: { ...action.imageDetails },
       }
     }
+
+    case FETCHED_IMAGES: {
+      return { ...state }
+    }
+
     default: {
       return { ...state }
     }

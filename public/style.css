@@ -19,3 +19,21 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+#videoInitialization {
+  display: none;
+}
+
+#top-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+#screen-outputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+}
