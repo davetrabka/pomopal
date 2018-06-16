@@ -39,8 +39,8 @@ class Analysis extends Component {
               We noticed a frown forming on that face and wanted to check in.
               Take a deep breath, no work is worth getting too worked up about!
             </p>
-            <Header as="h2" id="recommendation" color="red">
-              Take a 5 minute break - you look like you need it!
+            <Header as="h1" id="recommendation" color="red">
+              Take a 5 minute break!
             </Header>
           </Modal.Description>
         </Modal.Content>

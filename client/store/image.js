@@ -6,9 +6,13 @@ const initialState = {
   currentImage: {},
 }
 
-// const STORED_NEW_IMAGE = 'STORED_NEW_IMAGE'
+const STORED_NEW_IMAGE = 'STORED_NEW_IMAGE'
 const ANALYZED_IMAGE = 'ANALYZED_IMAGE'
 const FETCHED_IMAGES = 'FETCHED_IMAGES'
+
+const storedNewImage = () => ({
+  type: STORED_NEW_IMAGE,
+})
 
 const analyzedImage = imageDetails => ({
   type: ANALYZED_IMAGE,
@@ -19,26 +23,23 @@ const fetchedImages = () => ({
   type: FETCHED_IMAGES,
 })
 
-// const storedNewImage = () => ({
-//   type: STORED_NEW_IMAGE,
-// })
+export const storeNewImage = dataUrl => async dispatch => {
+  try {
+    await axios.post('https://api.imgur.com/3/upload', {
+      type: 'base64',
+      image: dataUrl,
+      headers: {
+        Authorization: 'Client-ID 7b3236e6fd9e639',
+        Accept: 'application/json',
+      },
+    })
+    console.log('DATAURL: ', dataUrl)
+    dispatch(storedNewImage())
+  } catch (error) {
+    console.error(error)
+  }
+}
 
-// export const storeNewImage = dataUrl => async dispatch => {
-//   try {
-//     const { data } = await axios.post('https://api.imgur.com/3/image', {
-//       type: 'base64',
-//       image: dataUrl,
-//       headers: {
-//         Authorization: 'Client-ID 7b3236e6fd9e639',
-//         Accept: 'application/json',
-//       },
-//     })
-//     console.log('IMGUR THUNK: ', data)
-//     dispatch(storedNewImage())
-//   } catch (error) {
-//     console.error(error)
-//   }
-// }
 export const fetchImages = () => dispatch => {
   dispatch(fetchedImages())
 }

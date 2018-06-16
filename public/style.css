@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  background-color: rgb(240, 240, 240);
 }
 
 a {
@@ -61,7 +62,7 @@ form div {
 
 #shadows {
   font-family: 'Shadows Into Light', cursive;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: bold;
   color: rgb(231, 45, 45);
 }

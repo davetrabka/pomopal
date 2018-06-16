@@ -91,23 +91,23 @@ class CameraOutput extends Component {
             computer can, too.
           </Container>
           <Divider />
-
           {!this.state.off ? (
-            <div id="screen-outputs">
+            <Container id="screen-outputs">
               <video autoPlay />
               <Divider section horizontal>
-                Illustrative Capture (to be taken every 2 minutes)
+                Illustrative IMAGE Capture (to be taken every 2 minutes)
               </Divider>
               <canvas id="grabFrameCanvas" />
               <br />
               <Analysis />
-            </div>
+            </Container>
           ) : (
             <Header
               size="huge"
               textAlign="center"
               id="recommendation"
               color="red">
+              <br />
               <br />
               <br />
               Let's get to work...
@@ -134,9 +134,10 @@ export default connect(
   mapDispatch
 )(CameraOutput)
 
-// IMAGE TEST CASES -----------------------------------------------
+/* IMAGE TEST CASES -----------------------------------------------
 
-// Frown forming
+Frown forming
+-----------------------------------
 const frown = [
   'https://i.imgur.com/bdVNsfz.jpg', // happy
   'https://i.imgur.com/bdVNsfz.jpg', // happy
@@ -146,8 +147,10 @@ const frown = [
   'https://i.imgur.com/bdVNsfz.jpg', // happy
 ]
 
-// Massive change -- gets way worse than where you started
-const negEvent = [
+
+Massive change -- gets way worse than where you started
+-----------------------------------
+[
   'https://i.imgur.com/bdVNsfz.jpg',
   'https://i.imgur.com/bdVNsfz.jpg',
   'https://i.imgur.com/bdVNsfz.jpg',
@@ -157,3 +160,5 @@ const negEvent = [
   'https://i.imgur.com/Hs77tl9.jpg',
   'https://i.imgur.com/Hs77tl9.jpg',
 ]
+
+*/
