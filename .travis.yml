@@ -14,15 +14,13 @@ notifications:
 install:
   - npm i -g npm@5.7.1 # delete once 5.7.X is out of "pre-release"
   - npm ci             # faster, goes only from package-lock
-before_script:
-  - psql -c 'create database "boilermaker-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 
-# before_deploy:
-#   - npm run build-client # make the bundle
-#   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   app: YOUR-HEROKU-APP-NAME-HERE # see README
-#   api_key:
-#     secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+before_deploy:
+  - npm run build-client # make the bundle
+  - rm -rf node_modules # omit from the tarball, since we skip cleanup
+deploy:
+  skip_cleanup: true # prevents travis from deleting the build
+  provider: heroku
+  app: pompal # see README
+  api_key:
+      secure: "5vA8q7b0WMQp17IJBS/47ckI3sN+kqiZ782tf7eyhRT8U727nNwBHWsdsHTu6lf0Y8tcAFuiTDZQ18VE51WNxmBKZpOL0CFJKyyPAZ7dFZC/PYY5jUONwc++LUAJGHxIpNlqr/NOzeCyGDF6M4HSjP4o+EK8KHzs/jnIbxNPcxkzIKOFaKWGkNwnGYFsyOYe6bxZaDk1kSiRYMqPaurv8LjfVgMzyOp4LsMDzUwvNMU0IaoNafVqHiEbUKMH6ZxYN54icbuGBRu0y7bW9XHGNIoNy5WawBBtaZaJlUmn2EsYhUL8yg3Ts93NIzcaflITIeoI6qFN+3Nw7nHvu5gPyk0EAja1540CbgzlY8i/ldgN0By5DX42vHSjloxgV7iWes5atOv5PJWArB5yJN2KCEcGgxP2cZpSVLLa/qsi9EteAgioEsrth3FP8ryF8MRPVH3vpdR+b5pHT8Mf9/NGlQsrdbHNcOx2WaM7ikeTTMkd7SF4Tgn73yv1JFU7hK9aMh+CdAswSK6VhYS6YccQBjLXCR10yCrC7+IEfBGL7hCpgh7YUcKNIeMTZL15hXsytAstlOmzogyZZPPEqzkiburpz8BVL9ztRkP3lv/T11LSzPoXh7eGOJrP/2aXribD8/iVkzzW9qXLTCQa49YO33iKtHGki290xAhoBQyUiC4="
