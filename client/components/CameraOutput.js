@@ -18,8 +18,17 @@ class CameraOutput extends Component {
   }
 
   handleImage = () => {
-    takeImage()
-    this.analyzeImage()
+    // ------------------- ON CLICK -------------------
+    // takeImage()
+    // this.analyzeImage()
+    // ------------------- ON TIMER -------------------
+    const run = setInterval(() => {
+      takeImage()
+      this.analyzeImage()
+    }, 3000) // 120,000 in production for 2 min
+    setTimeout(() => {
+      clearInterval(run)
+    }, 24000)
   }
 
   convertImageData = () => {

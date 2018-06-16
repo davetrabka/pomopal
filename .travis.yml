@@ -15,7 +15,6 @@ install:
   - npm i -g npm@5.7.1 # delete once 5.7.X is out of "pre-release"
   - npm ci             # faster, goes only from package-lock
 
-
 before_deploy:
   - npm run build-client # make the bundle
   - rm -rf node_modules # omit from the tarball, since we skip cleanup

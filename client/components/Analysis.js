@@ -46,8 +46,7 @@ class Analysis extends Component {
         </Modal.Content>
         <Modal.Actions>
           <Button color="grey">
-            <Icon name="remove" onClick={() => this.render()} /> I'm fine, go
-            away!
+            <Icon name="remove" /> I'm fine, go away!
           </Button>
         </Modal.Actions>
       </Modal>
