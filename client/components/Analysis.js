@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Header, Image, Modal, Button, Icon } from 'semantic-ui-react'
-import { fetchImages } from './store/image'
+import { fetchImages } from '../store/image'
 
 class Analysis extends Component {
   componentDidMount = async () => {

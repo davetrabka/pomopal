@@ -1,15 +1,7 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
+import CameraOutput from './components/CameraOutput'
 
-import { Navbar } from './components'
-import Routes from './routes'
-
-const App = () => {
-  return (
-    <div>
-      {/* <Navbar /> */}
-      <Routes />
-    </div>
-  )
-}
+const App = () => <Route exact path="/" component={CameraOutput} />
 
 export default App

@@ -1,10 +1,6 @@
 'use strict'
 
 let imageCapture
-let imageDataUrl
-
-// id : 7b3236e6fd9e639
-// imgrsecret: 99f9d786bc8fb504a61c8ea977e8894663a8cc98
 
 export const getCameraAccess = status => {
   const off = status
@@ -47,9 +43,6 @@ export const takeImage = () => {
     .then(imageBitmap => {
       const canvas = document.querySelector('#grabFrameCanvas')
       drawCanvas(canvas, imageBitmap)
-      imageDataUrl = canvas.toDataURL('image/jpeg')
     })
     .catch(error => console.error(error))
 }
-
-export const getImageUrl = () => imageDataUrl
