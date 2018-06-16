@@ -56,7 +56,6 @@ export const analyzeNewImage = imageUrl => async dispatch => {
         },
       }
     )
-    console.log('AI DATA FOR IMAGE: ', data)
     dispatch(analyzedImage(data))
   } catch (error) {
     console.error(error)

@@ -17,14 +17,12 @@ class CameraOutput extends Component {
   state = {
     off: true,
     images: [
-      'https://i.imgur.com/bdVNsfz.jpg',
-      'https://i.imgur.com/bdVNsfz.jpg',
-      'https://i.imgur.com/bdVNsfz.jpg',
-      'https://i.imgur.com/bdVNsfz.jpg', //____________________
-      'https://i.imgur.com/Hs77tl9.jpg',
-      'https://i.imgur.com/Hs77tl9.jpg',
-      'https://i.imgur.com/Hs77tl9.jpg',
-      'https://i.imgur.com/Hs77tl9.jpg',
+      'https://i.imgur.com/bdVNsfz.jpg', // happy
+      'https://i.imgur.com/bdVNsfz.jpg', // happy
+      'https://i.imgur.com/bdVNsfz.jpg', // happy
+      'https://i.imgur.com/3qjRuCH.jpg', // meh
+      'https://i.imgur.com/Hs77tl9.jpg', // unhappy
+      'https://i.imgur.com/bdVNsfz.jpg', // happy
     ],
   }
 
@@ -48,7 +46,7 @@ class CameraOutput extends Component {
       this.props.analyzeNewImage(this.state.images[counter])
       counter++
       if (counter === this.state.images.length - 1) clearInterval(int)
-    }, 1500)
+    }, 2000)
   }
 
   render() {
