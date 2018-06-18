@@ -1,7 +1,7 @@
 'use strict'
 import React from 'react'
 import { Divider, Container } from 'semantic-ui-react'
-import Analysis from './Analysis'
+import AnalysisSmile from './AnalysisSmile'
 
 const ScreenOutputs = () => {
   return (
@@ -12,7 +12,7 @@ const ScreenOutputs = () => {
       </Divider>
       <canvas id="grabFrameCanvas" />
       <br />
-      <Analysis />
+      <AnalysisSmile />
     </Container>
   )
 }

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Header, Image, Modal, Button, Icon } from 'semantic-ui-react'
 import { fetchImages } from '../store/image'
 
-class Analysis extends Component {
+class AnalysisSmile extends Component {
   componentDidMount = async () => {
     await this.props.fetchImages()
   }
@@ -65,4 +65,4 @@ const mapDispatch = dispatch => ({
 export default connect(
   mapState,
   mapDispatch
-)(Analysis)
+)(AnalysisSmile)

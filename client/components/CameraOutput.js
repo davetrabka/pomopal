@@ -28,7 +28,7 @@ class CameraOutput extends Component {
     }, 3000) // 120,000 in production for 2 min
     setTimeout(() => {
       clearInterval(run)
-    }, 24000)
+    }, 30000)
   }
 
   convertImageData = () => {
@@ -66,7 +66,7 @@ class CameraOutput extends Component {
             textAlign="center"
             id="recommendation"
             color="red">
-            Let's get to work . . .
+            Let's get to work.
           </Header>
         )}
       </Container>
