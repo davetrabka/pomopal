@@ -17,18 +17,18 @@ class CameraOutput extends Component {
     this.setState({ off: newState })
   }
 
+  timeoutHandler = () => {
+    if (!this.props.smileModal) {
+      setTimeout(() => {
+        takeImage()
+        this.analyzeImage()
+        this.timeoutHandler()
+      }, 3000) // 120,000 in production for 2 min
+    }
+  }
+
   handleImage = () => {
-    // ------------------- ON CLICK -------------------
-    // takeImage()
-    // this.analyzeImage()
-    // ------------------- ON TIMER -------------------
-    const run = setInterval(() => {
-      takeImage()
-      this.analyzeImage()
-    }, 3000) // 120,000 in production for 2 min
-    setTimeout(() => {
-      clearInterval(run)
-    }, 30000)
+    this.timeoutHandler()
   }
 
   convertImageData = () => {
@@ -76,6 +76,7 @@ class CameraOutput extends Component {
 
 const mapState = state => ({
   images: state.image.images,
+  smileModal: state.image.smileModal,
 })
 
 const mapDispatch = dispatch => ({
