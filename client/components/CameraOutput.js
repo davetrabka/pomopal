@@ -61,7 +61,7 @@ class CameraOutput extends Component {
           handleImage={this.handleImage}
           disabled={this.state.off}
         />
-        <DescriptionBlock />
+        <DescriptionBlock off={this.state.off} />
         {!this.state.off ? (
           <ScreenOutputs />
         ) : (

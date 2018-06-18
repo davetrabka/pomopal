@@ -69,6 +69,8 @@ class AnalysisAnger extends Component {
 const mapState = state => ({
   images: state.image.images,
   angerModal: state.image.angerModal,
+  smileModal: state.image.smileModal,
+  contemptModal: state.image.contemptModal,
 })
 
 const mapDispatch = dispatch => ({
