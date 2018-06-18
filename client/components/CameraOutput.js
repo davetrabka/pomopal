@@ -19,6 +19,7 @@ class CameraOutput extends Component {
 
   timeoutHandler = () => {
     if (
+      !this.state.off &&
       !this.props.smileModal &&
       !this.props.angerModal &&
       !this.props.contemptModal
@@ -47,10 +48,12 @@ class CameraOutput extends Component {
   }
 
   analyzeImage = () => {
-    setTimeout(() => {
-      const blob = this.convertImageData()
-      this.props.analyzeNewImage(blob)
-    }, 2000)
+    if (!this.state.off) {
+      setTimeout(() => {
+        const blob = this.convertImageData()
+        this.props.analyzeNewImage(blob)
+      }, 1000)
+    }
   }
 
   render() {
@@ -70,6 +73,8 @@ class CameraOutput extends Component {
             textAlign="center"
             id="recommendation"
             color="red">
+            <br />
+            <br />
             Let's get to work.
           </Header>
         )}

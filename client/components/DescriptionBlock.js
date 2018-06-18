@@ -18,7 +18,7 @@ const DescriptionBlock = props => {
             <Icon name="circle" color="red" id="circles" />
           </Container>
           <Container textAlign="center" id="subsub">
-            <span id="shadows">PomPal </span> is an AI-powered pomodoro app. As
+            <span id="shadows">PomoPal </span> is an AI-powered pomodoro app. As
             if your mom doesn't already tell you to smile more, now your
             computer can, too.
           </Container>

@@ -13,7 +13,7 @@ const HeaderBlock = props => {
         <Image src="/img/logo.svg" size="mini" />
         <span>
           <Header size="huge" id="header" color="red">
-            PomPal
+            PomoPal
           </Header>
         </span>
       </div>
