@@ -22,10 +22,10 @@ class AnalysisAnger extends Component {
     const anger = this.props.images.map(
       analysis => analysis[0].faceAttributes.emotion.anger
     )
-    console.log(
-      `%c ANGER: [${anger}]`,
-      'color: white; font-weight: bold; background: orange'
-    )
+    // console.log(
+    //   `%c ANGER: [${anger}]`,
+    //   'color: white; font-weight: bold; background: orange'
+    // )
     for (let i = 0; i < anger.length; i++) {
       if (
         anger[i] / anger[i - 1] - 1 > 0.5 &&

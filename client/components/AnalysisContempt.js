@@ -24,12 +24,12 @@ class AnalysisContempt extends Component {
     )
     console.log(
       `%c CONTEMPT: [${contempt}]`,
-      'color: white; font-weight: bold; background: red'
+      'color: white; font-weight: bold; background: ORANGE'
     )
     for (let i = 0; i < contempt.length; i++) {
       if (
-        contempt[i] / contempt[i - 1] - 1 > 0.5 &&
-        contempt[i - 1] / contempt[i - 2] - 1 > 0.5
+        contempt[i] / contempt[i - 1] - 1 > 1 &&
+        contempt[i - 1] / contempt[i - 2] - 1 > 1
       ) {
         if (!this.props.contemptModal) {
           this.props.toggleContemptModal()

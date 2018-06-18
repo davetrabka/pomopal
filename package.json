@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "PomoPal",
   "version": "1.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "AI-enabled Pomodoro Technique app that suggests work breaks based on facial expressions and emotion",
   "engines": {
     "node": ">= 7.0.0"
   },
