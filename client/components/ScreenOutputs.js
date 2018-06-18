@@ -2,6 +2,8 @@
 import React from 'react'
 import { Divider, Container } from 'semantic-ui-react'
 import AnalysisSmile from './AnalysisSmile'
+import AnalysisAnger from './AnalysisAnger'
+import AnalysisContempt from './AnalysisContempt'
 
 const ScreenOutputs = () => {
   return (
@@ -13,6 +15,8 @@ const ScreenOutputs = () => {
       <canvas id="grabFrameCanvas" />
       <br />
       <AnalysisSmile />
+      <AnalysisAnger />
+      <AnalysisContempt />
     </Container>
   )
 }

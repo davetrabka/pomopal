@@ -4,15 +4,27 @@ import axios from 'axios'
 const initialState = {
   images: [],
   smileModal: false,
+  angerModal: false,
+  contemptModal: false,
 }
 
-const TOGGLED_SMILE_MODAL = 'TOGGLED_MODAL'
+const TOGGLED_SMILE_MODAL = 'TOGGLED_SMILE_MODAL'
+const TOGGLED_ANGER_MODAL = 'TOGGLED_ANGER_MODAL'
+const TOGGLED_CONTEMPT_MODAL = 'TOGGLED_CONTEMPT_MODAL'
+
 const ANALYZED_IMAGE = 'ANALYZED_IMAGE'
 const FETCHED_IMAGES = 'FETCHED_IMAGES'
 const CLEARED_IMAGES = 'CLEARED_IMAGES'
 
 const toggledSmileModal = () => ({
   type: TOGGLED_SMILE_MODAL,
+})
+
+const toggledAngerModal = () => ({
+  type: TOGGLED_ANGER_MODAL,
+})
+const toggledContemptModal = () => ({
+  type: TOGGLED_CONTEMPT_MODAL,
 })
 
 const analyzedImage = imageDetails => ({
@@ -30,6 +42,14 @@ const clearedImages = () => ({
 
 export const toggleSmileModal = () => dispatch => {
   dispatch(toggledSmileModal())
+}
+
+export const toggleAngerModal = () => dispatch => {
+  dispatch(toggledAngerModal())
+}
+
+export const toggleContemptModal = () => dispatch => {
+  dispatch(toggledContemptModal())
 }
 
 export const analyzeNewImage = blob => async dispatch => {
@@ -64,6 +84,18 @@ const imageReducer = (state = initialState, action) => {
       return {
         ...state,
         smileModal: !state.smileModal,
+      }
+    }
+    case TOGGLED_ANGER_MODAL: {
+      return {
+        ...state,
+        angerModal: !state.angerModal,
+      }
+    }
+    case TOGGLED_CONTEMPT_MODAL: {
+      return {
+        ...state,
+        angerModal: !state.contemptModal,
       }
     }
     case ANALYZED_IMAGE: {

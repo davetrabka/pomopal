@@ -18,7 +18,11 @@ class CameraOutput extends Component {
   }
 
   timeoutHandler = () => {
-    if (!this.props.smileModal) {
+    if (
+      !this.props.smileModal &&
+      !this.props.angerModal &&
+      !this.props.contemptModal
+    ) {
       setTimeout(() => {
         takeImage()
         this.analyzeImage()
@@ -77,6 +81,8 @@ class CameraOutput extends Component {
 const mapState = state => ({
   images: state.image.images,
   smileModal: state.image.smileModal,
+  angerModal: state.image.angerModal,
+  contemptModal: state.image.contemptModal,
 })
 
 const mapDispatch = dispatch => ({

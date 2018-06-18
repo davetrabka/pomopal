@@ -7,7 +7,6 @@ import { fetchImages, toggleSmileModal, clearImages } from '../store/image'
 class AnalysisSmile extends Component {
   componentDidMount = async () => {
     await this.props.fetchImages()
-    this.analyzeSmile()
   }
 
   componentDidUpdate = prevProps => {
@@ -24,7 +23,7 @@ class AnalysisSmile extends Component {
       analysis => analysis[0].faceAttributes.smile
     )
     console.log(
-      `%c SMILE GRADE OVER TIME: [${smile}]`,
+      `%c SMILE: [${smile}]`,
       'color: white; font-weight: bold; background: green'
     )
     for (let i = 0; i < smile.length; i++) {
