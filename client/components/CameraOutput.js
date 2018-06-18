@@ -28,7 +28,7 @@ class CameraOutput extends Component {
         takeImage()
         this.analyzeImage()
         this.timeoutHandler()
-      }, 3000) // 120,000 in production for 2 min
+      }, 3000) // 2 min interval in production
     }
   }
 
